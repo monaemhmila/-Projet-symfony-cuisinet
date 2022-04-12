@@ -1,0 +1,255 @@
+<!doctype html>
+<html lang="en">
+
+    <head>
+        
+        <meta charset="utf-8" />
+        <title>Add Product | Nazox - Responsive Bootstrap 4 Admin Dashboard</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta content="Premium Multipurpose Admin Dashboard Template" name="description" />
+        <meta content="Themesdesign" name="author" />
+ 
+
+
+        <!-- App favicon -->
+        <link rel="shortcut icon" href="{{ asset('assets/images/favicon.ico') }}">
+
+        <!-- twitter-bootstrap-wizard css -->
+        <link rel="stylesheet" href="{{ asset('assets/libs/twitter-bootstrap-wizard/prettify.css') }}">
+
+        <!-- select2 css -->
+        <link href="{{ asset('assets/libs/select2/css/select2.min.css') }} " rel="stylesheet" type="text/css" />
+
+        <!-- dropzone css -->
+        <link href="{{ asset('assets/libs/dropzone/min/dropzone.min.css') }}" rel="stylesheet" type="text/css" />
+
+        <!-- Bootstrap Css -->
+        <link href="{{ asset('assets/css/bootstrap.min.css') }}" id="bootstrap-style" rel="stylesheet" type="text/css" />
+        <!-- Icons Css -->
+        <link href="{{ asset('assets/css/icons.min.css') }}" rel="stylesheet" type="text/css" />
+        <!-- App Css-->
+        <link href="{{ asset('assets/css/app.min.css') }}" id="app-style" rel="stylesheet" type="text/css" />
+
+
+
+
+
+    </head>
+
+    <body data-sidebar="dark">
+
+            <div class="main-content">
+
+                <div class="page-content">
+                    <div class="container-fluid">
+
+                        <!-- start page title -->
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="page-title-box d-flex align-items-center justify-content-between">
+                                    <h4 class="mb-0">Add Product</h4>
+
+                                    <div class="page-title-right">
+                                        <ol class="breadcrumb m-0">
+                                            <li class="breadcrumb-item"><a href="javascript: void(0);">Ecommerce</a></li>
+                                            <li class="breadcrumb-item active">Update Fournisseur</li>
+                                        </ol>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                        <!-- end page title -->
+
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <div class="card">
+                                    <div class="card-body">
+                                        
+                                        <div id="addproduct-nav-pills-wizard" class="twitter-bs-wizard">
+                                            
+                                           
+                                           {{ form_start(fournisseurForm,{'attr':{'novalidate' : 'novalidate'}}) }}
+
+                                                        <div class="form-group">
+
+                                   <label class="form-label">{{ form_label(fournisseurForm.nom)}}</label>
+                                        {{ form_widget(fournisseurForm.nom, {'attr': {'class': 'form-control'}})}}
+                                      {{form_errors(fournisseurForm.nom)}}
+                                                            {# <label for="productname">Product Name</label>
+                                                            <input id="productname" name="productname" type="text" class="form-control">
+                                                        </div> #}
+                                                        <div class="row">
+                                                            <div class="col-lg-4">
+                                                                
+                                                                <div class="form-group">
+                                                                    
+                                                                    
+                                                                     <label class="form-label">{{ form_label(fournisseurForm.tel)}}</label>
+                                        {{ form_widget(fournisseurForm.tel, {'attr': {'class': 'form-control'}})}}
+                                      {{form_errors(fournisseurForm.tel)}}
+                                                                    
+                                                                    
+                                                                    {# <label for="manufacturername">Telephone</label>
+                                                                    <input id="manufacturername" name="manufacturername" type="text" class="form-control"> #}
+                                                                </div>
+                                                            </div>
+                                                           
+                                                          
+                                                        </div>
+                                                       
+
+                                                        <div class="form-group">
+                                                          
+                                                          
+                                                             <label class="form-label">{{ form_label(fournisseurForm.descfor)}}</label>
+                                        {{ form_widget(fournisseurForm.descfor, {'attr': {'class': 'form-control'}})}}
+                                      {{form_errors(fournisseurForm.descfor)}}
+                                                                    
+                                                          
+                                                          
+                                                          
+                                                            {# <label for="productdesc">Fournisseur Description</label>
+                                                            <textarea class="form-control" id="productdesc" rows="5"></textarea> #}
+                                                        </div>
+                    
+                                                </div>
+                                                {# <div class="tab-pane" id="product-img">
+                                                    <h4 class="card-title">Product Images</h4>
+                                                    <p class="card-title-desc">Upload product image</p>
+                                                    <form action="/" method="post" class="dropzone">
+                                                        <div class="fallback">
+                                                            <input name="file" type="file" multiple />
+                                                        </div>
+                        
+                                                        <div class="dz-message needsclick">
+                                                            <div class="mb-3">
+                                                                <i class="display-4 text-muted ri-upload-cloud-2-line"></i>
+                                                            </div>
+                                                            
+                                                            <h4>Drop files here or click to upload.</h4>
+                                                        </div>
+                                                    </form>
+                                                </div> #}
+                                                <div class="tab-pane" id="metadata">
+                                                   
+                                                    <div class="text-center mt-4">
+                                                        {# <button type="submit" class="btn btn-primary mr-2 waves-effect waves-light">Save </button>
+                                                        <button type="submit" class="btn btn-light waves-effect">Cancel</button> #}
+
+
+                                             {{ form_widget(fournisseurForm.Update, {'attr': {'class': 'btn btn-primary mr-2 waves-effect waves-light'}})}}
+
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <ul class="pager wizard twitter-bs-wizard-pager-link">
+                                                <li class="previous"><a href="#">Previous</a></li>
+                                                <li class="next"><a href="#">Next</a></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                                              {{form_end(fournisseurForm)}}
+
+                        <!-- end row -->
+
+                    </div> <!-- container-fluid -->
+                </div>
+                <!-- End Page-content -->
+
+                
+                <footer class="footer">
+                    <div class="container-fluid">
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <script>document.write(new Date().getFullYear())</script> © Nazox.
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="text-sm-right d-none d-sm-block">
+                                    Crafted with <i class="mdi mdi-heart text-danger"></i> by Themesdesign
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </footer>
+            </div>
+            <!-- end main content-->
+
+        </div>
+        <!-- END layout-wrapper -->
+
+        <!-- Right Sidebar -->
+        <div class="right-bar">
+            <div data-simplebar class="h-100">
+                <div class="rightbar-title px-3 py-4">
+                    <a href="javascript:void(0);" class="right-bar-toggle float-right">
+                        <i class="mdi mdi-close noti-icon"></i>
+                    </a>
+                    <h5 class="m-0">Settings</h5>
+                </div>
+
+                <!-- Settings -->
+                <hr class="mt-0" />
+                <h6 class="text-center mb-0">Choose Layouts</h6>
+
+                <div class="p-4">
+                    <div class="mb-2">
+                    </div>
+                    <div class="custom-control custom-switch mb-3">
+                        <input type="checkbox" class="custom-control-input theme-choice" id="light-mode-switch" checked />
+                        <label class="custom-control-label" for="light-mode-switch">Light Mode</label>
+                    </div>
+    
+                    <div class="mb-2">
+                    </div>
+                    <div class="custom-control custom-switch mb-3">
+                        <input type="checkbox" class="custom-control-input theme-choice" id="dark-mode-switch" data-bsStyle="assets/css/bootstrap-dark.min.css" data-appStyle="assets/css/app-dark.min.css" />
+                        <label class="custom-control-label" for="dark-mode-switch">Dark Mode</label>
+                    </div>
+    
+                    <div class="mb-2">
+                    </div>
+                    <div class="custom-control custom-switch mb-5">
+                        <input type="checkbox" class="custom-control-input theme-choice" id="rtl-mode-switch" data-appStyle="assets/css/app-rtl.min.css" />
+                        <label class="custom-control-label" for="rtl-mode-switch">RTL Mode</label>
+                    </div>
+
+            
+                </div>
+
+            </div> <!-- end slimscroll-menu-->
+        </div>
+        <!-- /Right-bar -->
+
+        <!-- Right bar overlay-->
+        <div class="rightbar-overlay"></div>
+
+        <!-- JAVASCRIPT -->
+        <script src="assets/libs/jquery/jquery.min.js"></script>
+        <script src="assets/libs/bootstrap/js/bootstrap.bundle.min.js"></script>
+        <script src="assets/libs/metismenu/metisMenu.min.js"></script>
+        <script src="assets/libs/simplebar/simplebar.min.js"></script>
+        <script src="assets/libs/node-waves/waves.min.js"></script>
+
+        <!-- twitter-bootstrap-wizard js -->
+        <script src="assets/libs/twitter-bootstrap-wizard/jquery.bootstrap.wizard.min.js"></script>
+
+        <script src="assets/libs/twitter-bootstrap-wizard/prettify.js"></script>
+
+        <!-- select 2 plugin -->
+        <script src="assets/libs/select2/js/select2.min.js"></script>
+
+        <!-- dropzone plugin -->
+        <script src="assets/libs/dropzone/min/dropzone.min.js"></script>
+
+        <!-- init js -->
+        <script src="assets/js/pages/ecommerce-add-product.init.js"></script>
+
+        <script src="assets/js/app.js"></script>
+
+    </body>
+</html>
