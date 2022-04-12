@@ -1,13 +1,13 @@
 <?php
 
 namespace App\Entity;
-
+use Symfony\Component\Validator\Constraints as Assert;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
  * Materiel
  *
- * @ORM\Table(name="materiel", indexes={@ORM\Index(name="ck_idfor", columns={"id_for"})})
+ * @ORM\Table(name="materiel", indexes={@ORM\Index(name="ck_idfor", columns={"idfor"})})
  * @ORM\Entity
  */
 class Materiel
@@ -25,6 +25,7 @@ class Materiel
      * @var string
      *
      * @ORM\Column(name="nom", type="string", length=255, nullable=false)
+     * @Assert\NotNull (message="vous devez saisir le nom ")
      */
     private $nom;
 
@@ -32,6 +33,7 @@ class Materiel
      * @var int
      *
      * @ORM\Column(name="prix", type="integer", nullable=false)
+      * @Assert\NotNull (message="vous devez saisir le prix ")
      */
     private $prix;
 
@@ -39,6 +41,7 @@ class Materiel
      * @var string
      *
      * @ORM\Column(name="descmat", type="string", length=255, nullable=false)
+     * @Assert\NotNull (message="vous devez saisir la description ")
      */
     private $descmat;
 
@@ -47,7 +50,7 @@ class Materiel
      *
      * @ORM\ManyToOne(targetEntity="Fournisseur")
      * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="id_for", referencedColumnName="idfor")
+     *   @ORM\JoinColumn(name="idfor", referencedColumnName="idfor")
      * })
      */
     private $idFor;

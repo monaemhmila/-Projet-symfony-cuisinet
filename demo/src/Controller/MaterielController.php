@@ -44,10 +44,10 @@ class MaterielController extends AbstractController
  /**
      * @Route("/ajoutMateriel", name="AjoutMateriel")
      */
-    public function addproduits(Request $request): Response
+    public function addmateriel(Request $request): Response
     {
-        $produits = new Materiel();
-        $form = $this->createForm(MaterielType::class, $produits);
+        $materiel = new Materiel();
+        $form = $this->createForm(MaterielType::class, $materiel);
             $form->add('Ajouter',SubmitType::class);
         $form->handleRequest($request);
         if($form->isSubmitted() && $form->isValid())
@@ -55,9 +55,9 @@ class MaterielController extends AbstractController
             // $images= $form->get('imageP')->getData();
             // $fichier = md5(uniqid()) . '.' . $images->guessExtension();
             // $images->move($this->getParameter('upload_directory'), $fichier);
-            // $produits->setImageP($fichier);
+            // $materiel->setImageP($fichier);
             $entityManager = $this->getDoctrine()->getManager();
-            $entityManager->persist($produits);
+            $entityManager->persist($materiel);
             $entityManager->flush();
             return $this->redirectToRoute('Show_materiel');
         }
@@ -67,7 +67,7 @@ class MaterielController extends AbstractController
     }
 
   /** 
-    * @Route ("/Deletemateriel/{id}", name="delete_materiel")
+    * @Route ("/DeleteMateriel/{id}", name="delete_materiel")
     */
     function Delete($id,MaterielRepository $rep){
         $classroom=$rep->find($id);
@@ -86,8 +86,8 @@ class MaterielController extends AbstractController
  
     function UpdateProd(MaterielRepository $repository,$id,Request $request)
     {
-        $produits = $repository->find($id);
-        $form = $this->createForm(MaterielType::class, $produits);
+        $materiel = $repository->find($id);
+        $form = $this->createForm(MaterielType::class, $materiel);
         $form->add('Update', SubmitType::class);
 
         $form->handleRequest($request);
@@ -105,7 +105,7 @@ class MaterielController extends AbstractController
         //            $destination,
         //            $newFilename
         //        );
-        //        $produits->setImageP($newFilename);
+        //        $materiel->setImageP($newFilename);
         //    }
            $em = $this->getDoctrine()->getManager();
            $em->flush();
