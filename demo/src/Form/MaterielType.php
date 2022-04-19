@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Form;
-
+use FOS\CKEditorBundle\Form\Type\CKEditorType;
 use App\Entity\Materiel;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
@@ -14,7 +14,7 @@ class MaterielType extends AbstractType
         $builder
             ->add('nom')
             ->add('prix')
-            ->add('descmat',TextareaType::class,)
+            ->add('descmat',CKEditorType::class,)
             ->add('idFor')
         ;
     }

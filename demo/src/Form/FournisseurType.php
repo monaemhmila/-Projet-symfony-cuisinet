@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Form;
-
+use FOS\CKEditorBundle\Form\Type\CKEditorType;
 use App\Entity\Fournisseur;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
@@ -15,7 +15,7 @@ class FournisseurType extends AbstractType
         $builder
             ->add('nom')
             ->add('tel')
-            ->add('descfor',TextareaType::class,)
+            ->add('descfor',CKEditorType::class,)
         ;
     }
 
