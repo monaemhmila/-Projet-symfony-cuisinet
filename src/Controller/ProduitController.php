@@ -5,6 +5,7 @@ namespace App\Controller;
 use App\Entity\Produit;
 use App\Form\ProduitEditFormType;
 use App\Form\ProduitType;
+use App\Form\ProduitEditType;
 use App\Repository\ProduitRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
@@ -14,6 +15,10 @@ use Symfony\Component\HttpFoundation\Session\SessionInterface;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\HttpFoundation\File\File;
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
+
+use Dompdf\Dompdf;
+use Dompdf\Options;
 
 class ProduitController extends AbstractController
 {
@@ -118,6 +123,66 @@ class ProduitController extends AbstractController
         return $this->render('produit/AfficherFront.html.twig',
             ['produits'=>$produits ]);
 
+    }
+
+    /**
+     * @param ProduitRepository $repository
+     * @return Response
+     * @route("/StatistiquesProduits", name="StatistiquesProduits")
+     */
+    public function StatistiquesProduits(ProduitRepository $repository){
+
+        {
+
+            $produits=$repository->findAll();
+            return $this->render('produit/statistiques.html.twig',
+                ['produits'=>$produits]);
+        }
+
+
+    }
+    /**
+     * @Route("/DownloadProduitsData", name="DownloadProduitsData")
+     */
+    public function DownloadProduitsData(ProduitRepository $repository)
+    {
+        $produits=$repository->findAll();
+
+        // On définit les options du PDF
+        $pdfOptions = new Options();
+        // Police par défaut
+        $pdfOptions->set('defaultFont', 'Arial');
+        $pdfOptions->setIsRemoteEnabled(true);
+
+        // On instancie Dompdf
+        $dompdf = new Dompdf($pdfOptions);
+        $context = stream_context_create([
+            'ssl' => [
+                'verify_peer' => FALSE,
+                'verify_peer_name' => FALSE,
+                'allow_self_signed' => TRUE
+            ]
+        ]);
+        $dompdf->setHttpContext($context);
+
+        // On génère le html
+        $html = $this->renderView('produit/download.html.twig',
+            ['produits'=>$produits ]);
+
+
+        $dompdf->loadHtml($html);
+        $dompdf->setPaper('A4', 'portrait');
+        $dompdf->render();
+
+        // On génère un nom de fichier
+        $fichier = 'Tableau des Produits.pdf';
+
+        // On envoie le PDF au navigateur
+        $dompdf->stream($fichier, [
+            'Attachment' => true
+        ]);
+
+        return new Response();
     }
 
 

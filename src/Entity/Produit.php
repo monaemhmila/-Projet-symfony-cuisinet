@@ -44,6 +44,7 @@ class Produit
 
     /**
      * @ORM\Column(type="float")
+     * @Assert\GreaterThan(0)
      */
     private $prix;
 
@@ -56,6 +57,11 @@ class Produit
      * @ORM\OneToMany(targetEntity=Promotion::class, mappedBy="produit", cascade={"all"}, orphanRemoval=true)
      */
     private $promotions;
+
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $type;
 
 
     public function getId(): ?int
@@ -107,6 +113,18 @@ class Produit
     public function setPhoto( $photo): self
     {
         $this->photo = $photo;
+
+        return $this;
+    }
+
+    public function getType(): ?string
+    {
+        return $this->type;
+    }
+
+    public function setType(string $type): self
+    {
+        $this->type = $type;
 
         return $this;
     }

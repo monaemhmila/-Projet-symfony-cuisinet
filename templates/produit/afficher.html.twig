@@ -26,6 +26,8 @@
             <div class="card">
                 <div class="card-body">
                     <h4 class="card-title">Tableau Des Produits</h4>
+                    <a href="{{ path('DownloadProduitsData') }}" class="btn btn-dark waves-effect waves-light">Download PDF</a>
+
                     <p class="card-title-desc"></p>
 
                     <div class="table-rep-plugin">
@@ -37,7 +39,10 @@
                                     <th >Nom</th>
                                     <th >Description</th>
                                     <th >Prix</th>
+                                    <th >Type</th>
+
                                     <th >Photo</th>
+
                                     <th style="width: 120px;">Action</th>
                                 </tr>
                                 </thead>
@@ -47,6 +52,8 @@
                                     <td>{{ p.nom }}</td>
                                     <td>{{ p.description }}</td>
                                     <td>{{ p.prix }}</td>
+                                    <td>{{ p.type }}</td>
+
                                     <td><img style="height: 100px" src="{{ asset('uploads/images/') ~ p.photo }}"/></td>
                                     <td>
                                         <a href="{{ path('ModifierProduit',{'id':p.id}) }}" class="mr-3 text-primary" data-toggle="tooltip" data-placement="top" title="Modifier" data-original-title="Edit"><i class="mdi mdi-pencil font-size-18"></i></a>

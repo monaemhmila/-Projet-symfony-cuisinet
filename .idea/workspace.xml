@@ -11,6 +11,13 @@
     <pharConfigPath>$PROJECT_DIR$/composer.json</pharConfigPath>
     <execution />
   </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="HTML File" />
+      </list>
+    </option>
+  </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
@@ -147,6 +154,10 @@
       <path value="$PROJECT_DIR$/vendor/behat/transliterator" />
       <path value="$PROJECT_DIR$/vendor/gedmo/doctrine-extensions" />
       <path value="$PROJECT_DIR$/vendor/stof/doctrine-extensions-bundle" />
+      <path value="$PROJECT_DIR$/vendor/dompdf/dompdf" />
+      <path value="$PROJECT_DIR$/vendor/sabberworm/php-css-parser" />
+      <path value="$PROJECT_DIR$/vendor/phenx/php-font-lib" />
+      <path value="$PROJECT_DIR$/vendor/phenx/php-svg-lib" />
     </include_path>
   </component>
   <component name="ProjectId" id="27fiYdAJZBv125xHG6iylGeeeRG" />
@@ -155,10 +166,11 @@
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
+    <property name="DefaultHtmlFileTemplate" value="HTML File" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../chef.html" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../VolcanoFootball-main" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
@@ -177,7 +189,14 @@
       <option name="presentableId" value="Default" />
       <updated>1649717589636</updated>
       <workItem from="1649717591019" duration="53000" />
-      <workItem from="1649717662139" duration="12949000" />
+      <workItem from="1649717662139" duration="22963000" />
+      <workItem from="1650039076517" duration="43000" />
+      <workItem from="1650040009214" duration="4680000" />
+      <workItem from="1650319068387" duration="3090000" />
+      <workItem from="1650322882076" duration="14819000" />
+      <workItem from="1650343012988" duration="197000" />
+      <workItem from="1650343226302" duration="2958000" />
+      <workItem from="1650346241679" duration="240000" />
     </task>
     <servers />
   </component>

@@ -4,7 +4,7 @@ namespace App\Entity;
 
 use App\Repository\PromotionRepository;
 use Doctrine\ORM\Mapping as ORM;
-
+use Symfony\Component\Validator\Constraints as Assert;
 /**
  * @ORM\Entity(repositoryClass=PromotionRepository::class)
  */
@@ -24,6 +24,11 @@ class Promotion
 
     /**
      * @ORM\Column(type="integer")
+    @Assert\Range(
+     *      min = 1,
+     *      max = 99,
+     *      notInRangeMessage = "Le pourcentage doit etre entre 1 et 99",
+     * )
      */
     private $pourcentage;
 
