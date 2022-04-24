@@ -3,26 +3,54 @@
 namespace App\Controller;
 
 
+use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\HttpFoundation\ResponseHeaderBag;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+
+// Include PhpSpreadsheet required namespaces
+use PhpOffice\PhpSpreadsheet\Spreadsheet;
+use PhpOffice\PhpSpreadsheet\Writer\Xlsx;
 use App\Entity\Fournisseur;
 use App\Form\FournisseurType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use App\Repository\FournisseurRepository;
-
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpFoundation\Request;
-
 class FournisseurController extends AbstractController
 {
     /**
      * @Route("/fournisseur", name="app_fournisseur")
      */
+    public function exel()
+    {   
+        $spreadsheet = new Spreadsheet();
+        
+        /* @var $sheet \PhpOffice\PhpSpreadsheet\Writer\Xlsx\Worksheet */
+        $sheet = $spreadsheet->getActiveSheet();
+        $sheet->setCellValue('A1', 'Hello World !');
+        $sheet->setTitle("My First Worksheet");
+        
+        // Create your Office 2007 Excel (XLSX Format)
+        $writer = new Xlsx($spreadsheet);
+        
+        // Create a Temporary file in the system
+        $fileName = 'my_first_excel_symfony4.xlsx';
+        $temp_file = tempnam(sys_get_temp_dir(), $fileName);
+        
+        // Create the excel file in the tmp directory of the system
+        $writer->save($temp_file);
+        
+        // Return the excel file as an attachment
+        return $this->file($temp_file, $fileName, ResponseHeaderBag::DISPOSITION_INLINE);
+}
     public function index(): Response
     {
+        
         return $this->render('fournisseur/index.html.twig', [
             'controller_name' => 'FournisseurController',
         ]);
+
     }
 
 
@@ -36,6 +64,7 @@ class FournisseurController extends AbstractController
     return $this->render('back/show_fournisseur.html.twig', [
         "fournisseurs" => $fournisseurs,
     ]);
+    
 }
 
 
@@ -64,6 +93,25 @@ class FournisseurController extends AbstractController
         return $this->render("BACK/AjoutFournisseur.html.twig", [
             "fournisseurForm" => $form->createView(),
         ]);
+        $spreadsheet = new Spreadsheet();
+        
+        /* @var $sheet \PhpOffice\PhpSpreadsheet\Writer\Xlsx\Worksheet */
+        $sheet = $spreadsheet->getActiveSheet();
+        $sheet->setCellValue('A1', 'Hello World !');
+        $sheet->setTitle("My First Worksheet");
+        
+        // Create your Office 2007 Excel (XLSX Format)
+        $writer = new Xlsx($spreadsheet);
+        
+        // Create a Temporary file in the system
+        $fileName = 'my_first_excel_symfony4.xlsx';
+        $temp_file = tempnam(sys_get_temp_dir(), $fileName);
+        
+        // Create the excel file in the tmp directory of the system
+        $writer->save($temp_file);
+        
+        // Return the excel file as an attachment
+        return $this->file($temp_file, $fileName, ResponseHeaderBag::DISPOSITION_INLINE);
     }
 
   /** 
