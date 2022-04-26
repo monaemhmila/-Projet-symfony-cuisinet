@@ -1,0 +1,6 @@
+tutorial_blog_homepage:
+
+ajax_search:
+  path:     /search
+  defaults: { _controller: ProduitController:Produit:search }
+

@@ -25,6 +25,11 @@
         <div class="col-12">
             <div class="card">
                 <div class="card-body">
+                    <div>
+                        <p style="100px" > <input  id="myInput"  type="text" placeholder="search">
+                            <img src="https://img.icons8.com/nolan/344/google-web-search.png" style="width:50px;height:50px;"/></p>
+
+                    </div>
                     <h4 class="card-title">Tableau Des Produits</h4>
                     <a href="{{ path('DownloadProduitsData') }}" class="btn btn-dark waves-effect waves-light">Download PDF</a>
 
@@ -47,6 +52,10 @@
                                 </tr>
                                 </thead>
                                 <tbody>
+
+                                <tbody>
+                                <tbody>
+                                <tbody id="myTable">
                                 <tr {% for p in produits %}>
                                     <td>{{ p.id }}</td>
                                     <td>{{ p.nom }}</td>
@@ -60,6 +69,9 @@
                                         <a href="{{ path('SupprimerProduit',{'id':p.id}) }}" class="text-danger" data-toggle="tooltip" data-placement="top" title="Supprimer" data-original-title="Delete"><i class="mdi mdi-trash-can font-size-18"></i></a>
                                     </td>
                                 </tr {% endfor %}>
+                                <tbody id="search">
+
+                                </tbody>
                                 </tbody>
                             </table>
                         </div>
@@ -76,4 +88,17 @@
         $('#tech-companies-1').DataTable();
     </script>
 
+
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            $("#myInput").on("keyup", function() {
+                var value = $(this).val().toLowerCase();
+                $("#myTable tr").filter(function() {
+                    $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+                });
+            });
+        });
+    </script>
 {% endblock %}

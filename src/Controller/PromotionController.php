@@ -5,6 +5,7 @@ namespace App\Controller;
 use App\Entity\Promotion;
 use App\Form\PromotionType;
 use App\Repository\PromotionRepository;
+use App\Service\Mailer;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\HttpFoundation\Request;
@@ -78,6 +79,17 @@ class PromotionController extends AbstractController
 
 
     }
+    /**
+     * @Route("/MailPromotion", name="MailPromotion")
+     */
+    function MailPromotion(Mailer $mailer){
+
+        $mailer->sendEmailProm('Wassim.khemiri@esprit.tn');
+        $this->addFlash("success", "Promotion effectuée avec succès! Merci de consulter votre mail");
+        return  $this->redirectToRoute('AfficherPromotions');
+    }
+
+
 
 
 

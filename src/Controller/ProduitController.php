@@ -185,7 +185,32 @@ class ProduitController extends AbstractController
         return new Response();
     }
 
+    /**
+     * Search action.
+     * @Route("/search/{search}", name="search")
+     * @param  Request               $request Request instance
+     * @param  string                $search  Search term
+     * @return Response|JsonResponse          Response instance
+     */
+    public function searchAction(Request $request, string $search)
+    {
+        if (!$request->isXmlHttpRequest()) {
+            return $this->render("search.html.twig");
+        }
 
+        if (!$searchTerm = trim($request->query->get("search", $search))) {
+            return new JsonResponse(["error" => "Search term not specified."], Response::HTTP_BAD_REQUEST);
+        }
+
+        $em = $this->getDoctrine()->getManager();
+        if (!($results = $em->getRepository(User::class)->findOneByEmail($searchTerm))) {
+            return new JsonResponse(["error" => "No results found."], Response::HTTP_NOT_FOUND);
+        }
+
+        return new JsonResponse([
+            "html" => $this->renderView("search.ajax.twig", ["results" => $results]),
+        ]);
+    }
 
 
 

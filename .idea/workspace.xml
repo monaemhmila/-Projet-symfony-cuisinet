@@ -158,6 +158,9 @@
       <path value="$PROJECT_DIR$/vendor/sabberworm/php-css-parser" />
       <path value="$PROJECT_DIR$/vendor/phenx/php-font-lib" />
       <path value="$PROJECT_DIR$/vendor/phenx/php-svg-lib" />
+      <path value="$PROJECT_DIR$/vendor/symfony/swiftmailer-bundle" />
+      <path value="$PROJECT_DIR$/vendor/swiftmailer/swiftmailer" />
+      <path value="$PROJECT_DIR$/vendor/symfony/google-mailer" />
     </include_path>
   </component>
   <component name="ProjectId" id="27fiYdAJZBv125xHG6iylGeeeRG" />
@@ -170,9 +173,18 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../VolcanoFootball-main" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="vue.rearranger.settings.migration" value="true" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\Master\Desktop\Cuisinet\src\config" />
+      <recent name="C:\Users\Master\Desktop\Cuisinet\templates\mail" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\Master\Desktop\Cuisinet\src" />
+    </key>
   </component>
   <component name="RunManager">
     <configuration name="phpunit.xml.dist" type="PHPUnitRunConfigurationType" factoryName="PHPUnit">
@@ -197,6 +209,13 @@
       <workItem from="1650343012988" duration="197000" />
       <workItem from="1650343226302" duration="2958000" />
       <workItem from="1650346241679" duration="240000" />
+      <workItem from="1650346704731" duration="4968000" />
+      <workItem from="1650505534106" duration="1192000" />
+      <workItem from="1650660903145" duration="2385000" />
+      <workItem from="1650821106503" duration="635000" />
+      <workItem from="1650877131637" duration="998000" />
+      <workItem from="1650879159391" duration="9138000" />
+      <workItem from="1650891251294" duration="3303000" />
     </task>
     <servers />
   </component>
