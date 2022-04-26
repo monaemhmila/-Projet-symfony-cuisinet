@@ -1,0 +1,109 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Cuisinet Login!
+{% endblock %}
+{% form_theme form 'bootstrap_4_layout.html.twig' %}
+{% block css %}
+        <link rel="shortcut icon" href="{{ asset ('back-office/assets/images/favicon.ico')}}">
+        <!-- jquery.vectormap css -->
+        <link href="{{ asset ('back-office/assets/libs/admin-resources/jquery.vectormap/jquery-jvectormap-1.2.2.css') }}" rel="stylesheet" type="text/css" />
+
+        <!-- DataTables -->
+        <link href="{{ asset ('back-office/assets/libs/datatables.net-bs4/css/dataTables.bootstrap4.min.css') }} " rel="stylesheet" type="text/css" />
+
+        <!-- Responsive datatable examples -->
+        <link href="{{ asset ('back-office/assets/libs/datatables.net-responsive-bs4/css/responsive.bootstrap4.min.css') }} " rel="stylesheet" type="text/css" />
+
+        <!-- Bootstrap Css -->
+        <link href="{{ asset ('back-office/assets/css/bootstrap.min.css')}}" id="bootstrap-style" rel="stylesheet" type="text/css" />
+        <!-- Icons Css -->
+        <link href="{{ asset ('back-office/assets/css/icons.min.css')}}" rel="stylesheet" type="text/css" />
+        <!-- App Css-->
+        <link href="{{ asset ('back-office/assets/css/app.min.css')}}" id="app-style" rel="stylesheet" type="text/css" />
+
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fullcalendar@5.10.2/main.min.css" integrity="sha256-5veQuRbWaECuYxwap/IOE/DAwNxgm4ikX7nrgsqYp88=" crossorigin="anonymous">        {% block stylesheets %}{% endblock %}
+
+
+    {% endblock %}
+
+{% block body %}
+	<style>
+		.example-wrapper {
+			margin: 1em auto;
+			max-width: 800px;
+			width: 95%;
+			font: 18px / 1.5 sans-serif;
+		}
+		.example-wrapper code {
+			background: #F5F5F5;
+			padding: 2px 6px;
+		}
+	</style>
+
+	<div class="example-wrapper">
+		<h1>Cuisinet Login! ✅</h1>
+
+		<h3>Connexion utilisateur:
+		</h3>
+		<div class="card-body">
+                    {{ form_start(form,{'attr': {'novalidate': 'novalidate'}} ) }}
+                    <p class="card-title-desc"></p>
+
+                    <div class="form-group row">
+                        <label for="example-text-input" class="col-md-2 col-form-label">{{ form_label(form.username) }}</label>
+                        <div class="col-md-10">
+                            <input class="form-control" {{ form_widget(form.username) }}
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <label for="example-text-input" class="col-md-2 col-form-label">{{ form_label(form.password) }}</label>
+                        <div class="col-md-10">
+                            <input type="password" class="form-control" {{ form_widget(form.password) }}
+                        </div>
+                    </div>
+
+
+                    {{ form_end(form) }}
+
+                </div>
+				<h4>
+		<a href="/register" name="register">S'inscrire</a>
+		</h4>
+		<br>
+		<a href="/">Revenir à l'accueil</a>
+	</div>
+	
+{% endblock %}
+
+{% block js %}
+    <!-- JAVASCRIPT -->
+    
+    <script src="{{ asset ('back-office/assets/libs/jquery/jquery.min.js')}}"></script>
+    <script src="{{ asset ('back-office/assets/libs/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
+    <script src="{{ asset ('back-office/assets/libs/metismenu/metisMenu.min.js')}}"></script>
+    <script src="{{ asset ('back-office/assets/libs/simplebar/simplebar.min.js')}}"></script>
+    <script src="{{ asset ('back-office/assets/libs/node-waves/waves.min.js')}}"></script>
+
+    <!-- jquery.vectormap map -->
+    <script src="{{ asset ('back-office/assets/libs/admin-resources/jquery.vectormap/jquery-jvectormap-1.2.2.min.js')}}"></script>
+    <script src="{{ asset ('back-office/assets/libs/admin-resources/jquery.vectormap/maps/jquery-jvectormap-us-merc-en.js')}}"></script>
+
+    <!-- Required datatable js -->
+    <script src="{{ asset ('back-office/assets/libs/datatables.net/js/jquery.dataTables.min.js')}}"></script>
+    <script src="{{ asset ('back-office/assets/libs/datatables.net-bs4/js/dataTables.bootstrap4.min.js')}}"></script>
+
+    <!-- Responsive examples -->
+    <script src="{{ asset ('back-office/assets/libs/datatables.net-responsive/js/dataTables.responsive.min.js')}}"></script>
+    <script src="{{ asset ('back-office/assets/libs/datatables.net-responsive-bs4/js/responsive.bootstrap4.min.js')}}"></script>
+
+    <script src="{{ asset ('back-office/assets/js/pages/dashboard.init.js')}}"></script>
+
+
+    <script src="{{ asset ('back-office/assets/js/app.js')}}"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/fullcalendar@5.10.2/main.min.js" integrity="sha256-YicH/8aE660iEnJtgll3vT54dJApy3XkYmqNfGVFEzA=" crossorigin="anonymous"></script>
+
+
+		
+{% endblock %}
