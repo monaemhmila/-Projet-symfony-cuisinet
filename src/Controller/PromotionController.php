@@ -85,7 +85,7 @@ class PromotionController extends AbstractController
     function MailPromotion(Mailer $mailer){
 
         $mailer->sendEmailProm('Wassim.khemiri@esprit.tn');
-        $this->addFlash("success", "Promotion effectuée avec succès! Merci de consulter votre mail");
+       // $this->addFlash("success", "Promotion effectuée avec succès! Merci de consulter votre mail");
         return  $this->redirectToRoute('AfficherPromotions');
     }
 

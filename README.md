@@ -1,2 +1,0 @@
-# WEB-cuisinet
-WEB-cuisinet
