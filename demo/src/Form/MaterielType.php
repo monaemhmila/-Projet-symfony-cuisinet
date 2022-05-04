@@ -14,7 +14,7 @@ class MaterielType extends AbstractType
         $builder
             ->add('nom')
             ->add('prix')
-            ->add('descmat',CKEditorType::class,)
+            ->add('descmat',)
             ->add('idFor')
         ;
     }

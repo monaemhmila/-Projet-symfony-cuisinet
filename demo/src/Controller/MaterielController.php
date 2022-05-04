@@ -7,7 +7,6 @@ use App\Entity\Materiel;
 use App\Form\MaterielType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use App\Repository\MaterielRepository;
-
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -44,7 +43,7 @@ class MaterielController extends AbstractController
  /**
      * @Route("/ajoutMateriel", name="AjoutMateriel")
      */
-    public function addmateriel(Request $request): Response
+    public function addmateriel(Request $request,\Swift_Mailer $mailer): Response
     {
         $materiel = new Materiel();
         $form = $this->createForm(MaterielType::class, $materiel);
@@ -61,10 +60,28 @@ class MaterielController extends AbstractController
             $entityManager->flush();
             return $this->redirectToRoute('Show_materiel');
         }
+        $em = $this->getDoctrine()->getManager();
+        $materiels = $em->getRepository(materiel::class)->findAll();      
+        foreach($materiels as $materiel) {
+        $database = [$materiel->getNom(),$materiel->getPrix(),$materiel->getDescmat()]; 
+        $namePng =implode(' ',[$materiel->getNom()]);
+    } 
+    $message = (new \Swift_Message('activation mail'))
+    
+    ->setFrom('monemehamila@gmail.com')
+    ->setTo('monaem.hmila@esprit.tn')
+    ->setBody($namePng )
+    
+    
+    ;
+    
+    
         return $this->render("BACK/AjoutMateriel.html.twig", [
             "materielForm" => $form->createView(),
         ]);
+    
     }
+
 
   /** 
     * @Route ("/DeleteMateriel/{id}", name="delete_materiel")

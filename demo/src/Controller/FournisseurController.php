@@ -67,7 +67,16 @@ class FournisseurController extends AbstractController
     
 }
 
+    /**
+     * @route("AfficherfournisseurFront", name="AfficherfournisseurFront")
+     */
+    public function AfficherProduitsFront(){
 
+        $fournisseurs = $this->getDoctrine()->getRepository(Fournisseur::class)->findAll();
+        return $this->render('front/fournisseurFront.html.twig',
+            ['fournisseurs'=>$fournisseurs ]);
+
+    }
 
 
  /**

@@ -8,10 +8,10 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 // Include PhpSpreadsheet required namespaces
 use PhpOffice\PhpSpreadsheet\Spreadsheet;
 use PhpOffice\PhpSpreadsheet\Writer\Xlsx;
-use App\Entity\Fournisseur;
-use App\Form\FournisseurType;
+use App\Entity\Materiel;
+use App\Form\MaterielType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
-use App\Repository\FournisseurRepository;
+use App\Repository\MaterielRepository;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpFoundation\Request;
@@ -42,27 +42,29 @@ class IndexController extends AbstractController{
         /* @var $sheet \PhpOffice\PhpSpreadsheet\Writer\Xlsx\Worksheet */
         $sheet = $spreadsheet->getActiveSheet();
         $em = $this->getDoctrine()->getManager();
-        $fournisseurs = $em->getRepository(fournisseur::class)->findAll();
+        $materiels = $em->getRepository(materiel::class)->findAll();
         $i = 'A1';
-        foreach($fournisseurs as $fournisseur) {
-            $database = [$fournisseur->getNom(),$fournisseur->getTel(),$fournisseur->getDescfor()];
+        $B = 'B1';
+        foreach($materiels as $materiel) {
+            $database = [$materiel->getNom(),$materiel->getPrix(),$materiel->getDescmat()];
             $sheet  ->fromArray( $database, NULL, $i ); 
             $i++;
+            $url = json_encode([$materiel->getNom(),$materiel->getIdmat(),$materiel->getIdFor()]) ;
+                    //generate name
+            $namePng =implode(' ',[$materiel->getNom()]);
         }          
-        $retVal = $sheet->getCell('A12')->getCalculatedValue();
-        // Create your Office 2007 Excel (XLSX Format)
+        $sheet->setCellValue('B11', '=SUM(B1:B10)');
+        $sheet->setCellValue('A11', 'prix total=');       
         $writer = new Xlsx($spreadsheet);
         
         // Create a Temporary file in the system
-        $fileName = 'my_first_excel_symfony4.xlsx';
+        $fileName = 'materielexel.xlsx';
         $temp_file = tempnam(sys_get_temp_dir(), $fileName);
         
         // Create the excel file in the tmp directory of the system
         $writer->save($temp_file);
         
         // Return the excel file as an attachment
-        $url = 'https://www.google.com/search?q=';
-
         $objDateTime = new \DateTime('NOW');
         $dateString = $objDateTime->format('d-m-Y H:i:s');
 
@@ -82,13 +84,36 @@ class IndexController extends AbstractController{
             ->build()
         ;
 
-        //generate name
-        $namePng ='123.png';
 
         //Save img png
-        $result->saveToFile($path.$namePng);
+        $result->saveToFile($path.$namePng.'.png');
 
         return $this->file($temp_file, $fileName, ResponseHeaderBag::DISPOSITION_INLINE);
+     }
+
+    /**
+     * @Route("/mail")
+     */
+    
+     public function mailer(\Swift_Mailer $mailer)
+{          $em = $this->getDoctrine()->getManager();
+    $materiels = $em->getRepository(materiel::class)->findAll();      
+    foreach($materiels as $materiel) {
+    $database = [$materiel->getNom(),$materiel->getPrix(),$materiel->getDescmat()]; 
+    $namePng =implode(' ',[$materiel->getNom(),$materiel->getPrix(),$materiel->getDescmat()]);
+} 
+$message = (new \Swift_Message('activation mail'))
+
+->setFrom('monemehamila@gmail.com')
+->setTo('monaem.hmila@esprit.tn')
+->setBody($namePng )
+
+
+;
+
+$mailer->send($message);
+return $this->render('jaja.html.twig'); 
 }
+
 
 }
