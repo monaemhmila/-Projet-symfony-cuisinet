@@ -1,0 +1,235 @@
+{% extends 'base-front.html.twig' %}
+
+{% block content %}
+
+<section class="hero-wrap hero-wrap-2" style="background-image: url( {{ asset ('front-office/images/bg_5.jpg')}} );" data-stellar-background-ratio="0.5">
+    <div class="overlay"></div>
+    <div class="container">
+        <div class="row no-gutters slider-text align-items-end justify-content-center">
+            <div class="col-md-9 ftco-animate text-center mb-5">
+                <h1 class="mb-2 bread">Nos Produits</h1>
+                <p class="breadcrumbs"><span class="mr-2"><a href="">Home <i class="fa fa-chevron-right"></i></a></span> <span>Produit <i class="fa fa-chevron-right"></i></span></p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<div class="container">
+    <div class="row justify-content-center mb-5 pb-2">
+        <div class="col-md-7 text-center heading-section ftco-animate">
+            <span class="subheading">Nos Specialties</span>
+            <h2 class="mb-4">Notre Menu</h2>
+        </div>
+    </div>
+    <div class="row">
+
+        <div class="col-md-6 col-lg-4">
+            <div class="menu-wrap">
+                <div class="heading-menu text-center ftco-animate">
+                    <h3>PETIT-DEJEUNER</h3>
+                </div>
+                *                        {% for p in produits %}
+                    {% if p.type == "PETIT-DEJEUNER" %}
+
+                        <div class="menus d-flex ftco-animate">
+
+                            <div class="menu-img img" style="background-image: url({{ asset('uploads/images/') ~ p.photo }});"></div>
+                            <div class="text">
+                                <div class="d-flex">
+                                    <div class="one-half">
+                                        <h3>{{ p.nom }}</h3>
+                                    </div>
+                                    <div class="one-forth">
+                                        <span class="price">{{ p.prix }}$</span>
+                                    </div>
+                                </div>
+                                <p>{{ p.description }}</p>
+
+                            </div>
+
+                        </div>
+                    {% endif %}
+
+                {% endfor %}
+                <span class="flat flaticon-bread" style="left: 0;"></span>
+                <span class="flat flaticon-breakfast" style="right: 0;"></span>
+
+            </div>
+
+        </div>
+
+        <div class="col-md-6 col-lg-4">
+            <div class="menu-wrap">
+                <div class="heading-menu text-center ftco-animate">
+                    <h3>DEJEUNER</h3>
+                </div>
+                *                        {% for p in produits %}
+                    {% if p.type == "DEJEUNER" %}
+
+                        <div class="menus d-flex ftco-animate">
+
+                            <div class="menu-img img" style="background-image: url({{ asset('uploads/images/') ~ p.photo }});"></div>
+                            <div class="text">
+                                <div class="d-flex">
+                                    <div class="one-half">
+                                        <h3>{{ p.nom }}</h3>
+                                    </div>
+                                    <div class="one-forth">
+                        <span class="price">{{ p.prix }}$</span>
+
+                        </div>
+                                </div>
+                                <p>{{ p.description }}</p>
+
+                            </div>
+
+                        </div>
+                    {% endif %}
+
+                {% endfor %}
+                <span class="flat flaticon-pizza" style="left: 0;"></span>
+                <span class="flat flaticon-chicken" style="right: 0;"></span>
+            </div>
+
+        </div>
+
+        <div class="col-md-6 col-lg-4">
+            <div class="menu-wrap">
+                <div class="heading-menu text-center ftco-animate">
+                    <h3>DINNER</h3>
+                </div>
+                *                        {% for p in produits %}
+                    {% if p.type == "DINNER" %}
+
+                        <div class="menus d-flex ftco-animate">
+
+                            <div class="menu-img img" style="background-image: url({{ asset('uploads/images/') ~ p.photo }});"></div>
+                            <div class="text">
+                                <div class="d-flex">
+                                    <div class="one-half">
+                                        <h3>{{ p.nom }}</h3>
+                                    </div>
+                                    <div class="one-forth">
+                                        <span class="price">{{ p.prix }}$</span>
+                                    </div>
+                                </div>
+                                <p>{{ p.description }}</p>
+
+                            </div>
+
+                        </div>
+                    {% endif %}
+
+                {% endfor %}
+                <span class="flat flaticon-omelette" style="left: 0;"></span>
+                <span class="flat flaticon-burger" style="right: 0;"></span>
+            </div>
+
+        </div>
+
+        <div class="col-md-6 col-lg-4">
+            <div class="menu-wrap">
+                <div class="heading-menu text-center ftco-animate">
+                    <h3>DESSERTS</h3>
+                </div>
+                {% for p in produits %}
+                    {% if p.type == "DESSERTS" %}
+                        <div class="menus d-flex ftco-animate">
+
+                            <div class="menu-img img" style="background-image: url({{ asset('uploads/images/') ~ p.photo }});"></div>
+                            <div class="text">
+                                <div class="d-flex">
+                                    <div class="one-half">
+                                        <h3>{{ p.nom }}</h3>
+                                    </div>
+                                    <div class="one-forth">
+                                        <span class="price">{{ p.prix }}$</span>
+                                    </div>
+                                </div>
+                                <p>{{ p.description }}</p>
+
+                            </div>
+
+                        </div>
+                    {% endif %}
+
+                {% endfor %}
+                <span class="flat flaticon-cupcake" style="left: 0;"></span>
+                <span class="flat flaticon-ice-cream" style="right: 0;"></span>
+
+            </div>
+
+        </div>
+        <div class="col-md-6 col-lg-4">
+            <div class="menu-wrap">
+                <div class="heading-menu text-center ftco-animate">
+                    <h3>vin</h3>
+                </div>
+                {% for p in produits %}
+                    {% if p.type == "VIN" %}
+
+                        <div class="menus d-flex ftco-animate">
+
+                            <div class="menu-img img" style="background-image: url({{ asset('uploads/images/') ~ p.photo }});"></div>
+
+                            <div class="text">
+                                <div class="d-flex">
+                                    <div class="one-half">
+
+                                        <h3>{{ p.nom }}</h3>
+                                    </div>
+                                    <div class="one-forth">
+                                        <span class="price">{{ p.prix }}$</span>
+                                    </div>
+                                </div>
+                                <p>{{ p.description }}</p>
+
+                            </div>
+                        </div>
+                    {% endif %}
+
+                {% endfor %}
+                <span class="flat flaticon-wine" style="left: 0;"></span>
+                <span class="flat flaticon-wine-1" style="right: 0;"></span>
+            </div>
+
+        </div>
+
+        <div class="col-md-6 col-lg-4">
+            <div class="menu-wrap">
+                <div class="heading-menu text-center ftco-animate">
+                    <h3>boissons & Thé</h3>
+                </div>
+                {% for p in produits %}
+                    {% if p.type == "BOISSONS" %}
+
+                        <div class="menus d-flex ftco-animate">
+
+                            <div class="menu-img img" style="background-image: url({{ asset('uploads/images/') ~ p.photo }});"></div>
+                            <div class="text">
+                                <div class="d-flex">
+                                    <div class="one-half">
+                                        <h3>{{ p.nom }}</h3>
+                                    </div>
+                                    <div class="one-forth">
+                                        <span class="price">{{ p.prix }}$</span>
+                                    </div>
+                                </div>
+                                <p>{{ p.description }}</p>
+
+                            </div>
+
+                        </div>
+                    {% endif %}
+
+                {% endfor %}
+                <span class="flat flaticon-wine" style="left: 0;"></span>
+                <span class="flat flaticon-wine-1" style="right: 0;"></span>
+
+            </div>
+
+        </div>
+
+
+        {% endblock %}
+

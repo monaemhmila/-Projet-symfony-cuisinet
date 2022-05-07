@@ -1,0 +1,63 @@
+{% extends 'base-back.html.twig' %}
+
+
+
+{% block content %}
+
+    <div class="row">
+        <div class="col-lg-6">
+            <div class="card">
+                <div class="card-body">
+                    <h4 class="card-title mb-4">Statistiques des Produits Par Rapport la Type</h4>
+                    <div id="pie_chart" class="apex-charts" dir="ltr"></div>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-6">
+            <div class="card">
+                <div class="card-body">
+                    <h4 class="card-title mb-4">Statistiques des Produits Par Rapport haja o5ra</h4>
+
+                    <div id="donut_chart" class="apex-charts"  dir="ltr"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <script>
+        {%  set PetitDejeuner= 0 %}
+        {%  set Dejeuner = 0 %}
+        {%  set Dinner = 0 %}
+        {%  set DESSERTS= 0 %}
+        {%  set VIN = 0 %}
+        {%  set BOISSONS = 0 %}
+
+        {% for p in produits %}
+
+        {% if p.type == "PETIT-DEJEUNER" %}
+        {%  set PetitDejeuner = PetitDejeuner + 1 %}
+        {% elseif p.type == "DEJEUNER" %}
+        {%  set Dejeuner = Dejeuner + 1 %}
+        {% elseif p.type == "DINNER" %}
+        {%  set Dinner = Dinner + 1 %}
+        {% elseif p.type == "DESSERTS" %}
+        {%  set DESSERTS = DESSERTS + 1 %}
+        {% elseif p.type == "VIN" %}
+        {%  set VIN = VIN + 1 %}
+        {% elseif p.type == "BOISSONS" %}
+        {%  set BOISSONS = BOISSONS + 1 %}
+        {% endif %}
+
+        {% endfor %}
+
+
+
+
+
+        options={chart:{height:320,type:"pie"},series:[{{ PetitDejeuner }},{{ Dejeuner }},{{ Dinner }},{{ DESSERTS }},{{ VIN }},{{ BOISSONS }}],labels:["Petit-Dejeuner","Dejeuner","Dinner","DESSERTS","VIN","BOISSONS & Thé"],colors:["#1cbb8c","#5664d2","#fcb92c","#4aa3ff","#ff3d60","#041014"],legend:{show:!0,position:"bottom",horizontalAlign:"center",verticalAlign:"middle",floating:!1,fontSize:"14px",offsetX:0,offsetY:5},responsive:[{breakpoint:600,options:{chart:{height:240},legend:{show:!1}}}]};(chart=new ApexCharts(document.querySelector("#pie_chart"),options)).render();
+    </script>
+
+
+
+{% endblock %}
