@@ -21,7 +21,6 @@ use Endroid\QrCode\Encoding\Encoding;
 use Endroid\QrCode\Builder\BuilderInterface;
 use Endroid\QrCode\ErrorCorrectionLevel\ErrorCorrectionLevelHigh;
 use Endroid\QrCode\Label\Alignment\LabelAlignmentCenter;
-
 class IndexController extends AbstractController{
         /**
      * @var BuilderInterface
@@ -63,7 +62,13 @@ class IndexController extends AbstractController{
         
         // Create the excel file in the tmp directory of the system
         $writer->save($temp_file);
-        
+               // In this case, we want to write the file in the public directory
+               $publicDirectory =  dirname(__DIR__, 2).'/public';
+               // e.g /var/www/project/public/my_first_excel_symfony4.xlsx
+               $excelFilepath =  $publicDirectory . '/my_mobile_excel_codenameone.xlsx';
+               
+               // Create the file
+               $writer->save($excelFilepath);
         // Return the excel file as an attachment
         $objDateTime = new \DateTime('NOW');
         $dateString = $objDateTime->format('d-m-Y H:i:s');
