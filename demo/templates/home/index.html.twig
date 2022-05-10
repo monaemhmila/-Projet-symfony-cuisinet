@@ -1,0 +1,71 @@
+{% extends 'base-front.html.twig' %}
+
+{% block activeAccueil %}
+	class=active
+{% endblock %}
+
+{% block content %}
+
+	<div class="cuisinet-banner">
+		<div class="cuisinet-banner-text">
+			<h1>Bienvenu à Cuisinet</h1>
+			<p>
+				Chez Cuisinet, il n’y a d’autre ambition que celle de proposer une cuisine <br>
+				sincère, ancrée dans les saisons, authentique mais moderne, joyeuse<br>
+				et généreuse, aux inspirations larges.
+                Ici, vous trouverez des plats de cuisine authentiques et de qualité. <br>
+                Pour vous et vos amis.
+
+			</p>
+		</div>
+
+	</div>
+	<div class="banner-text">
+		<div class="container">
+			<div class="row">l'action commence à partir du 8<sup></sup>
+				mars , 2022.</div>
+		</div>
+	</div>
+
+	<!---------------------------------------------Block------------------------------------------------------>
+
+	<section class="product bg-white">
+		<div class="container">
+			<div class="row">
+				<h2 class="heading">
+					<span>PRODUITS</span>
+					RECOMMANDÉS
+				</h2>
+				<p class="headParagraph"></p>
+				<ul
+					class="product_details">{# {% for p in produits %}
+																								                        <li><a href="#">
+																								                            <div>
+																								                                <div class=product-img
+																								                                     style="background:url({{ asset('uploads/images/') ~ p.photo }}) center no-repeat"></div>
+																								                            </div>
+																								                            <ul class="oswald16 product_info">
+																								                                <li class=detailsContainer><span>{{ p.nom }}</span> <span>Taille: {{ p.taille }}</span></li>
+																								                                <li class=cartContainer><span>Prix: </span> <span class=price>${{ p.prix }}</span></li>
+																								                            </ul>
+																								                            </a>
+																								                        </li>
+																								                    {% endfor %} #}
+				</ul>
+				<div class="center">
+					<a href="#" class="btn btn-red">Visitez Notre Boutique</a>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<!---------------------------------------------END Block ------------------------------------------------------>
+
+
+</section>
+
+<script type="text/javascript">
+	$(function () {
+$('#da_gallery .gallery-list ').hoverdir();
+});
+</script>{% endblock %}

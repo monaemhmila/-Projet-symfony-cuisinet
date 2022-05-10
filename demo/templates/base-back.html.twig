@@ -123,7 +123,7 @@
                             <!-- item-->
                             <a class="dropdown-item" href=""><i class="ri-user-line align-middle mr-1"></i> Vos Informations</a>
                             <div class="dropdown-divider"></div>
-                            <a class="dropdown-item text-danger" href=""><i class="ri-shut-down-line align-middle mr-1 text-danger"></i> Se Déconnecter</a>
+                            <a class="dropdown-item text-danger" href="/logout"><i class="ri-shut-down-line align-middle mr-1 text-danger"></i> Se Déconnecter</a>
                         </div>
                     </div>
 
@@ -178,7 +178,35 @@
                                 <li><a href="{{ path('AjouterPromotion') }}">Ajouter</a></li>
                             </ul>
                         </li>
-
+                        <li>
+                            <a href="javascript: void(0);" class="has-arrow waves-effect">
+                                <i class="ri-store-2-line"></i>
+                                <span>Fournisseur</span>
+                            </a>
+                            <ul class="sub-menu" aria-expanded="false">
+                                <li><a href="/Showfournisseur">Afficher</a></li>
+                                <li><a href="/ajoutFournisseur">Ajouter</a></li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="javascript: void(0);" class="has-arrow waves-effect">
+                                <i class="ri-store-2-line"></i>
+                                <span>materiel</span>
+                            </a>
+                            <ul class="sub-menu" aria-expanded="false">
+                                <li><a href="/Showmateriel">Afficher</a></li>
+                                <li><a href="/ajoutMateriel">Ajouter</a></li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="javascript: void(0);" class="has-arrow waves-effect">
+                                <i class="ri-store-2-line"></i>
+                                <span>export excel</span>
+                            </a>
+                            <ul class="sub-menu" aria-expanded="false">
+                                <li><a href="/exel">export materiel data</a></li>
+                            </ul>
+                        </li>
                         <!-- END Module Wasim -->
 
                     </ul>

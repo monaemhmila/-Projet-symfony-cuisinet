@@ -1,0 +1,53 @@
+{% extends 'base-front2.html.twig' %}
+{% block content %}
+
+	<section class="hero-wrap hero-wrap-2" style="background-image: url('/front-office-v2/images/bg_5.jpg');" data-stellar-background-ratio="0.5">
+		<div class="overlay"></div>
+		<div class="container">
+			<div class="row no-gutters slider-text align-items-end justify-content-center">
+				<div class="col-md-9 ftco-animate text-center mb-5">
+					<h1 class="mb-2 bread">Check email</h1>
+					<p class="breadcrumbs">
+						<span class="mr-2">
+							<a href="index.html">User
+								<i class="fa fa-chevron-right"></i>
+							</a>
+						</span>
+						<span>Mot de passe oublié
+							<i class="fa fa-chevron-right"></i>
+						</span>
+					</p>
+				</div>
+			</div>
+		</div>
+	</section>
+
+
+	<section class="innerpage_all_wrap d-flex flex-col " style="margin-top: 5rem; margin-bottom: 5rem;" >
+		<div class="container">
+			<div class="row">
+				<h2 class="heading">E-mail de réinitialisation du mot de passe
+					<span>envoyé !</span>
+				</h2>
+
+				<p class="headParagraph"></p>
+
+
+				<p>
+					<h4 style="text-align: center">Si un compte correspondant à votre adresse e-mail existe, un e-mail vient d'être envoyé contenant un lien que vous pouvez utiliser pour réinitialiser votre mot de passe.</h4>
+					<h4 style="text-align: center; margin-top:10px">Ce lien expirera dans 1 heure.</h4>
+					<h4 style="text-align: center; margin-top:10px">Si vous ne recevez pas d'e-mail, veuillez vérifier votre dossier spam ou
+						<a href="{{ path('app_forgot_password_request') }}">réessayer</a>.</h4>
+				</p>
+
+
+			</div>
+
+
+		</div>
+	</div>
+</section></div></section>{% endblock %}{#
+	<p>
+	    This link will expire in {{ resetToken.expirationMessageKey|trans(resetToken.expirationMessageData, 'ResetPasswordBundle') }}.
+	</p>
+	#}

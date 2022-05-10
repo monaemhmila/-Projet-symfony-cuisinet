@@ -1,0 +1,58 @@
+{% extends 'base-front.html.twig' %}
+
+{% block activeProfil %}
+    class=active
+{% endblock %}
+
+{% block content %}
+
+    
+    <div style="height: 20rem;"></div>
+    <section class=innerpage_all_wrap>
+        <div class=container>
+            <div class=row><h2 class=heading>Veulliez remplir <span>les suivants: </span></h2>
+
+                <p class=headParagraph></p>
+                {{ form_start(form,{'attr': {'novalidate': 'novalidate'}} ) }}
+                <div  class="feedbackContact-open formcontact clearfix">
+
+                    <div class=form-group>
+                        {{ form_label(form.username) }}
+                        <input type=text class=form-control {{ form_widget(form.username) }}
+                    </div>
+                    <div class=form-group>
+                        {{ form_label(form.nom) }}
+                        <input type=text class=form-control {{ form_widget(form.nom) }}
+                    </div>
+                    <div class=form-group>
+                        {{ form_label(form.prenom) }}
+                        <input type=text class=form-control {{ form_widget(form.prenom) }}
+                    </div>
+                    <div class=form-group>
+                        {{ form_label(form.email) }}
+                        <input type=text class=form-control {{ form_widget(form.email) }}
+                    </div>
+                    <div class=form-group>
+                        {{ form_label(form.password) }}
+                        <input type=password class=form-control {{ form_widget(form.password) }}
+                    </div>
+                    <div class=form-group>
+                        {{ form_label(form.confirmePassword) }}
+                        <input type=password class=form-control {{ form_widget(form.confirmePassword) }}
+                    </div>
+
+
+                    {{ form_widget(form.modifier) }}
+                </div>
+
+                {{ form_end(form) }}
+
+            </div>
+
+
+        </div>
+        </div>
+    </section>
+
+
+{% endblock %}

@@ -117,7 +117,9 @@ $message = (new \Swift_Message('activation mail'))
 ;
 
 $mailer->send($message);
-return $this->render('jaja.html.twig'); 
+return $this->render('back/show_materiel.html.twig', [
+    "materiels" => $materiels,
+]);
 }
 
 
