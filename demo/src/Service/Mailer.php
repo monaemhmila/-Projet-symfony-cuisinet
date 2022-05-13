@@ -20,7 +20,7 @@ class Mailer{
     public function sendEmailProm($email)
     {
         $email = (new TemplatedEmail())
-            ->from('cuisinet@gmail.com')
+            ->from('cuisinet.app@gmail.com')
             ->to('wassim.khemiri@esprit.tn')
             ->subject('nouvelle promotion')
 
@@ -36,7 +36,7 @@ class Mailer{
     public function sendEmail($email, $token)
     {
         $email = (new TemplatedEmail())
-            ->from('volcanofootball.services@gmail.com')
+            ->from('cuisinet.app@gmail.com')
             ->to($email)
             ->subject('Confrimation du compte Cuisinet')
 
@@ -51,36 +51,6 @@ class Mailer{
 
         $this->mailer->send($email);
     }
-    public function sendEmailHebergement($email)
-    {
-        $email = (new TemplatedEmail())
-            ->from('volcanofootball.services@gmail.com')
-            ->to($email)
-            ->subject('Confrimation du Reservation des hebergement')
-
-            // path of the Twig template to render
-            ->htmlTemplate('email/emailH.html.twig')
-
-
-        ;
-
-        $this->mailer->send($email);
-    }
-
-    public function sendEmailTicket($email)
-    {
-        $email = (new TemplatedEmail())
-            ->from('volcanofootball.services@gmail.com')
-            ->to($email)
-            ->subject('Confrimation du Reservation de billet')
-
-            // path of the Twig template to render
-            ->htmlTemplate('email/Reservation.html.twig')
-
-
-        ;
-
-        $this->mailer->send($email);
-    }
+   
 
 }

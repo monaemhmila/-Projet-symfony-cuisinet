@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Tableau des Commandes</title>
+</head>
+<body >
+<h1 style="text-align: center; color: red">Cuisinet Services</h1>
+<h2 style="text-align: center">Tableau des Commandes</h2>
+
+<table border="1">
+    <thead>
+    <tr>
+        <th>ID</th>
+        <th >Nom</th>
+        <th >Description</th>
+        <th >Prix</th>
+        <th >Type</th>
+
+    </tr>
+    </thead>
+    <tbody>
+    {% for p in Commandes %}
+        <tr>
+            <td>{{ p.id }}</td>
+            <td>{{ p.nom }}</td>
+            <td>{{ p.Description }}</td>
+            <td>{{ p.Prix }}</td>
+            <td>{{ p.Type }}</td>
+
+        </tr>
+    {% endfor %}
+    </tbody>
+</table>
+
+
+</body>
+</html>

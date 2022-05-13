@@ -97,8 +97,38 @@
 								<a href="{{ path('home') }} " class="nav-link">Accueil</a>
 							</li>
 							<li class="nav-item">
-								<a href="" class="nav-link">Produits</a>
+								<a href="/AfficherProduitsFront" class="nav-link">Produits</a>
 							</li>
+							<li class="nav-item">
+								<a href="{{ path('AfficherfournisseurFront') }} " class="nav-link">Fournisseurs</a>
+							</li>							
+							<li class="nav-item">
+								<a href="/AfficherCommandesFront" class="nav-link">Commandes</a>
+							</li>
+							{% if (app.user) %}
+								<li class="nav-item">
+									<a href="{{ path('profile') }}" class="nav-link">Mon Compte</a>
+								</li>
+								<li class="nav-item">
+									<a href="{{ path('app_logout') }}" class="nav-link">Se déconnecter</a>
+								</li>
+								{% for role in app.user.roles %}
+									{% if (role == 'ROLE_ADMIN') %}
+										<li class="nav-item">
+											<a href="{{ path('dashboard') }}" class="nav-link">Admin</a>
+										</li>
+									{% endif %}
+								{% endfor %}
+
+							{% else %}
+								<li class="nav-item">
+									<a href="{{ path('app_login') }}" class="nav-link">Connexion</a>
+								</li>
+								<li class="nav-item">
+									<a href="{{ path('inscrire') }}" class="nav-link">S'inscrire</a>
+								</li>
+
+							{% endif %}
 						</ul>
 					</div>
 				</div>

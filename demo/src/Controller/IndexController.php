@@ -107,7 +107,7 @@ class IndexController extends AbstractController{
     $database = [$materiel->getNom(),$materiel->getPrix(),$materiel->getDescmat()]; 
     $namePng =implode(' ',[$materiel->getNom(),$materiel->getPrix(),$materiel->getDescmat()]);
 } 
-$message = (new \Swift_Message('activation mail'))
+$message = (new \Swift_Message('notification'))
 
 ->setFrom('monemehamila@gmail.com')
 ->setTo('monaem.hmila@esprit.tn')

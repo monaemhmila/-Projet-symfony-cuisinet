@@ -2,105 +2,131 @@
 
 namespace App\Entity;
 
+use App\Repository\CommandeRepository;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
- * Commande
- *
- * @ORM\Table(name="commande")
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass=CommandeRepository::class)
  */
 class Commande
 {
     /**
-     * @var int
-     *
-     * @ORM\Column(name="idcom", type="integer", nullable=false)
      * @ORM\Id
-     * @ORM\GeneratedValue(strategy="IDENTITY")
+     * @ORM\GeneratedValue
+     * @ORM\Column(type="integer")
      */
-    private $idcom;
+    private $id;
 
     /**
-     * @var string
-     *
-     * @ORM\Column(name="etatcom", type="string", length=255, nullable=false)
+     * @ORM\Column(type="string", length=255)
+     * @Assert\NotBlank(message="Le nom du Commande est obligatoire.")
+     * @Assert\Length(
+     * min = "3",
+     * max = "10",
+     * minMessage = "Le nom du Commande doit faire au moins {{ limit }} caractères",
+     * maxMessage = "Le nom du Commande ne peut pas être plus long que {{ limit }} caractères"
+     * )
      */
-    private $etatcom;
+    private $nom;
 
     /**
-     * @var string
-     *
-     * @ORM\Column(name="datecom", type="string", length=255, nullable=false)
+     * @ORM\Column(type="string", length=255)
+     * @Assert\NotBlank(message="Le description du Commande est obligatoire.")
+     * @Assert\Length(
+     * min = "5",
+     * max = "50",
+     * minMessage = "Le description du Commande doit faire au moins {{ limit }} caractères",
+     * maxMessage = "Le description du Commande ne peut pas être plus long que {{ limit }} caractères"
+     * )
      */
-    private $datecom;
+    private $description;
 
     /**
-     * @var string
-     *
-     * @ORM\Column(name="gendercom", type="string", length=255, nullable=false)
+     * @ORM\Column(type="float")
+     * @Assert\GreaterThan(0)
      */
-    private $gendercom;
+    private $prix;
 
     /**
-     * @var string
-     *
-     * @ORM\Column(name="descrom", type="string", length=255, nullable=false)
+     * @ORM\Column(type="string", length=255)
      */
-    private $descrom;
+    private $photo;
 
-    public function getIdcom(): ?int
+    /**
+     * @ORM\OneToMany(targetEntity=Livreur::class, mappedBy="Commande", cascade={"all"}, orphanRemoval=true)
+     */
+    private $livreurs;
+
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $type;
+
+
+    public function getId(): ?int
     {
-        return $this->idcom;
+        return $this->id;
     }
 
-    public function getEtatcom(): ?string
+    public function getNom(): ?string
     {
-        return $this->etatcom;
+        return $this->nom;
     }
 
-    public function setEtatcom(string $etatcom): self
+    public function setNom(string $nom): self
     {
-        $this->etatcom = $etatcom;
+        $this->nom = $nom;
 
         return $this;
     }
 
-    public function getDatecom(): ?string
+    public function getDescription(): ?string
     {
-        return $this->datecom;
+        return $this->description;
     }
 
-    public function setDatecom(string $datecom): self
+    public function setDescription(string $description): self
     {
-        $this->datecom = $datecom;
+        $this->description = $description;
 
         return $this;
     }
 
-    public function getGendercom(): ?string
+    public function getPrix(): ?float
     {
-        return $this->gendercom;
+        return $this->prix;
     }
 
-    public function setGendercom(string $gendercom): self
+    public function setPrix(float $prix): self
     {
-        $this->gendercom = $gendercom;
+        $this->prix = $prix;
 
         return $this;
     }
 
-    public function getDescrom(): ?string
+    public function getPhoto()
     {
-        return $this->descrom;
+        return $this->photo;
     }
 
-    public function setDescrom(string $descrom): self
+    public function setPhoto( $photo): self
     {
-        $this->descrom = $descrom;
+        $this->photo = $photo;
 
         return $this;
     }
 
+    public function getType(): ?string
+    {
+        return $this->type;
+    }
 
+    public function setType(string $type): self
+    {
+        $this->type = $type;
+
+        return $this;
+    }
 }
+

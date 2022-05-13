@@ -1,0 +1,72 @@
+{% extends 'base-front2.html.twig' %}
+{% block content %}
+
+    <section class="hero-wrap hero-wrap-2" style="background-image: url('/front-office-v2/images/bg_5.jpg');" data-stellar-background-ratio="0.5">
+		<div class="overlay"></div>
+		<div class="container">
+			<div class="row no-gutters slider-text align-items-end justify-content-center">
+				<div class="col-md-9 ftco-animate text-center mb-5">
+					<h1 class="mb-2 bread">Mon Profile</h1>
+					<p class="breadcrumbs">
+						<span class="mr-2">
+							<a href="index.html">User
+								<i class="fa fa-chevron-right"></i>
+							</a>
+						</span>
+						<span>Profile
+							<i class="fa fa-chevron-right"></i>
+						</span>
+					</p>
+				</div>
+			</div>
+		</div>
+	</section>
+
+    <section class="innerpage_all_wrap d-flex flex-col " style="margin-top: 5rem; margin-bottom: 5rem;">
+        <div class=container>
+            <div class=row style="flex-direction: column; align-content: center; align-items: center;"><h2 class=heading>Veuillez remplir <span>le formulaire suivant: </span></h2>
+
+                <p class=headParagraph></p>
+                {{ form_start(form,{'attr': {'novalidate': 'novalidate'}} ) }}
+                    <div  class="feedbackContact-open formcontact clearfix">
+
+                        <div class=form-group>
+                            {{ form_label(form.username) }}
+                            <input type=text class=form-control {{ form_widget(form.username) }}
+                        </div>
+                        <div class=form-group>
+                            {{ form_label(form.nom) }}
+                            <input type=text class=form-control {{ form_widget(form.nom) }}
+                        </div>
+                        <div class=form-group>
+                            {{ form_label(form.prenom) }}
+                            <input type=text class=form-control {{ form_widget(form.prenom) }}
+                        </div>
+                        <div class=form-group>
+                            {{ form_label(form.email) }}
+                            <input type=text class=form-control {{ form_widget(form.email) }}
+                        </div>
+                        <div class=form-group>
+                            {{ form_label(form.password) }}
+                            <input type=password class=form-control {{ form_widget(form.password) }}
+                        </div>
+                        <div class=form-group>
+                            {{ form_label(form.confirmePassword) }}
+                            <input type=password class=form-control {{ form_widget(form.confirmePassword) }}
+                        </div>
+
+
+                        {{ form_widget(form.inscrire) }}
+                    </div>
+
+                {{ form_end(form) }}
+
+                </div>
+
+
+            </div>
+        </div>
+    </section>
+
+
+{% endblock %}

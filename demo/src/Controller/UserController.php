@@ -191,7 +191,7 @@ class UserController extends AbstractController
         $dompdf->render();
 
         // On génère un nom de fichier
-        $fichier = 'Tableau des Utilisateurs.pdf';
+        $fichier = 'Cuisinet - Utilisateurs.pdf';
 
         // On envoie le PDF au navigateur
         $dompdf->stream($fichier, [
@@ -216,7 +216,7 @@ class UserController extends AbstractController
         $form=$this->createForm(UserRegisterType::class,$user);
         $form->add("inscrire",SubmitType::class, [
             'attr'=>[
-                'class'=>'btn btn-red'
+                'class'=>'btn btn-primary'
             ]
         ]);
         $form->handleRequest($request);
@@ -230,14 +230,13 @@ class UserController extends AbstractController
             $em->persist($user);
             $em->flush();
             $this->mailer->sendEmail($user->getEmail(), $user->getToken());
-            $this->addFlash("success", "Inscription réussie! Merci de confirmer votre compte");
+            $this->addFlash("success", "Inscription réussie! Merci de confirmer votre compte, le lien d'activation vous a été envoyé par email.");
             return  $this->redirectToRoute('app_login');
         }
-        return $this->render('user/inscrire.html.twig',[
+        return $this->render('front/user/register.html.twig',[
             'form'=>$form->createView()
         ]);
     }
-
     /**
      * @return string
      * @throws \Exception
@@ -271,17 +270,17 @@ class UserController extends AbstractController
     /**
      * @param UserRepository $repository
      * @return Response
-     * @route("/Profil", name="Profil")
+     * @route("/profile", name="profile")
      */
     public function Profil(UserRepository $repository){
-        $profil=$repository->find($this->getUser()->getId());
-        return $this->render('user/profilFront.html.twig',[
-            'profil'=>$profil
+        $profile=$repository->find($this->getUser()->getId());
+        return $this->render('front/user/profile.html.twig',[
+            'profile'=>$profile
         ]);
     }
 
     /**
-     * @route ("/ModifierProfil/{id}",name="ModifierProfil")
+     * @route ("/profile/edit/{id}",name="ModifierProfil")
      */
     function ModifierProfil(UserRepository  $repository, $id, Request $request, UserPasswordEncoderInterface $encoder){
 
@@ -289,7 +288,7 @@ class UserController extends AbstractController
         $form=$this->createForm(UserRegisterType::class, $user);
         $form->add("modifier",SubmitType::class, [
             'attr'=>[
-                'class'=>'btn btn-red'
+                'class'=>'btn btn-primary'
             ]
         ]);
 
@@ -301,7 +300,7 @@ class UserController extends AbstractController
             $em->flush();
             return $this->redirectToRoute("AfficherUsers");
         }
-        return $this->render('user/modifierProfil.html.twig',[
+        return $this->render('front/user/modifierProfile.html.twig',[
             'form'=>$form->createView(), 'user' => $this->getUser()->getUsername()
         ]);
         

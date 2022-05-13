@@ -35,7 +35,7 @@
 				<div class="card-body">
 
 					<h4 class="card-title">Tableau des Utilisateurs</h4>
-					<a href="{{ path('DownloadUsersData') }}" class="btn btn-dark waves-effect waves-light">Download PDF</a>
+					<a href="{{ path('DownloadUsersData') }}" class="btn btn-dark waves-effect waves-light">PDF ⬇</a>
 					<p class="card-title-desc"></p>
 
 					<div class="table-rep-plugin">
@@ -49,6 +49,7 @@
 										<th>Prenom</th>
 										<th>Email</th>
 										<th>Role</th>
+										<th>Confirmation</th>
 										<th>Statut</th>
 										<th style="width: 120px;">Action</th>
 									</tr>
@@ -69,6 +70,14 @@
 													Administrateur
 												{% endif %}
 											{% endfor %}
+
+										</td>
+										<td>
+											{% if u.enabled == 1 %}
+                                                <span class="badge badge-success">Confirmé</span>
+                                            {% else %}
+                                                <span class="badge badge-danger">Pas encore</span>
+                                            {% endif %}
 
 										</td>
 										<td>
