@@ -5,6 +5,7 @@ namespace App\Entity;
 use App\Repository\PromotionRepository;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
+use Symfony\Component\Serializer\Annotation\Groups;
 /**
  * @ORM\Entity(repositoryClass=PromotionRepository::class)
  */
@@ -14,6 +15,7 @@ class Promotion
      * @ORM\Id
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
+     * @Groups("post:read")
      */
     private $id;
 
@@ -29,6 +31,7 @@ class Promotion
      *      max = 99,
      *      notInRangeMessage = "Le pourcentage doit etre entre 1 et 99",
      * )
+     * @Groups("post:read")
      */
     private $pourcentage;
 

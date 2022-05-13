@@ -13,9 +13,9 @@ class Mailer{
     private $mailer;
 
     public function __construct(MailerInterface $mailer)
-{
-    $this->mailer = $mailer;
-}
+    {
+        $this->mailer = $mailer;
+    }
     public function sendEmailProm($email)
     {
         $email = (new TemplatedEmail())

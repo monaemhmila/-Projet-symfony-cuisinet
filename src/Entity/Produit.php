@@ -3,8 +3,11 @@
 namespace App\Entity;
 
 use App\Repository\ProduitRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
+use Symfony\Component\Serializer\Annotation\Groups;
 
 /**
  * @ORM\Entity(repositoryClass=ProduitRepository::class)
@@ -15,6 +18,7 @@ class Produit
      * @ORM\Id
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
+     * @Groups("post:read")
      */
     private $id;
 
@@ -27,7 +31,11 @@ class Produit
      * minMessage = "Le nom du produit doit faire au moins {{ limit }} caractères",
      * maxMessage = "Le nom du produit ne peut pas être plus long que {{ limit }} caractères"
      * )
+     * @Groups("post:read")
+
      */
+
+
     private $nom;
 
     /**
@@ -39,27 +47,34 @@ class Produit
      * minMessage = "Le description du produit doit faire au moins {{ limit }} caractères",
      * maxMessage = "Le description du produit ne peut pas être plus long que {{ limit }} caractères"
      * )
+     * @Groups("post:read")
+
      */
     private $description;
 
     /**
      * @ORM\Column(type="float")
      * @Assert\GreaterThan(0)
+     * @Groups("post:read")
+
      */
     private $prix;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Groups("post:read")
      */
     private $photo;
 
     /**
      * @ORM\OneToMany(targetEntity=Promotion::class, mappedBy="produit", cascade={"all"}, orphanRemoval=true)
+
      */
     private $promotions;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Groups("post:read")
      */
     private $type;
 
@@ -98,7 +113,7 @@ class Produit
         return $this->prix;
     }
 
-    public function setPrix(float $prix): self
+    public function setPrix (float $prix): self
     {
         $this->prix = $prix;
 

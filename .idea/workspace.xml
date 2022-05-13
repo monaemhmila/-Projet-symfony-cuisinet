@@ -173,14 +173,17 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/Controller" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\Master\Desktop\Cuisinet\src\Controller" />
+      <recent name="C:\Users\Master\Desktop\Cuisinet\src\Repository" />
+      <recent name="C:\Users\Master\Desktop\Cuisinet\src\Entity" />
+      <recent name="C:\Users\Master\Desktop\Cuisinet\templates" />
       <recent name="C:\Users\Master\Desktop\Cuisinet\src\config" />
-      <recent name="C:\Users\Master\Desktop\Cuisinet\templates\mail" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\Master\Desktop\Cuisinet\src" />
@@ -225,11 +228,28 @@
       <workItem from="1651265862148" duration="1189000" />
       <workItem from="1651439431712" duration="1189000" />
       <workItem from="1651518188937" duration="595000" />
-      <workItem from="1651627669318" duration="1188000" />
+      <workItem from="1651627669318" duration="2673000" />
+      <workItem from="1651682558017" duration="124000" />
+      <workItem from="1651809518067" duration="1592000" />
+      <workItem from="1651838170028" duration="11037000" />
+      <workItem from="1651963835223" duration="1453000" />
+      <workItem from="1652145440014" duration="7000" />
+      <workItem from="1652397188908" duration="192000" />
+      <workItem from="1652397406569" duration="27305000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="php">
+          <url>file://$PROJECT_DIR$/src/Controller/ProduitApiController.php</url>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>
